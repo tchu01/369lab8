@@ -21,7 +21,7 @@ public class PowerComp {
     @Override   // we are overriding Mapper's map() method
     public void map(LongWritable key, Text value, Context context)
         throws IOException, InterruptedException {
-      if (!(value.toString().charAt(0) == 'D')) {
+      if (!(value.toString().charAt(0) == 'D') && !(value.toString().contains("?"))) {
         String data[] = value.toString().split(";");
         context.write(new Text(data[0]), value);
       }
@@ -53,7 +53,7 @@ public class PowerComp {
 
       //TODO: Figure out these numbers.
       // Used both
-      if (sub2 < 100 || sub3 < 100) {
+      if (sub2 < 500 || sub3 < 6000) {
         context.write(new Text("true"), new Text(avgPowerConsumption + ""));
       } else {
         context.write(new Text("false"), new Text(avgPowerConsumption + ""));
@@ -97,7 +97,6 @@ public class PowerComp {
     @Override   // we are overriding Mapper's map() method
     public void map(LongWritable key, Text value, Context context)
         throws IOException, InterruptedException {
-      Scanner scanner = new Scanner(value.toString());
       context.write(new Text("average"), value);
     }
   }
