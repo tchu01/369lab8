@@ -53,9 +53,16 @@ public class PowerDays {
          for (Text val : values) {
             String data[] = val.toString().split(";");
             if (arr.containsKey(data[0])) {
-               arr.put(data[0], arr.get(data[0]) + Double.parseDouble(data[2]));
+               if(!data[2].equals("?")) {
+                  arr.put(data[0], arr.get(data[0]) + Double.parseDouble(data[2]));
+               }
             } else {
-               arr.put(data[0], Double.parseDouble(data[2]));
+               if(!data[2].equals("?")) {
+                  arr.put(data[0], Double.parseDouble(data[2]));
+               } else {
+                  arr.put(data[0], 0.0);
+               }
+
             }
          }
 
