@@ -168,11 +168,11 @@ public class PowerComp {
     job.setJarByClass(PowerComp.class);
     FileInputFormat.addInputPath(job, new Path("./mwong56/output2", "part-r-00000")); // put what you need as input file
     FileOutputFormat.setOutputPath(job, new Path(args[0])); // put what you need as output file
-    job.setMapperClass(SecondMap.class);
-    job.setReducerClass(SecondReduce.class);
+    job.setMapperClass(ThirdMap.class);
+    job.setReducerClass(ThirdReduce.class);
     job.setOutputKeyClass(Text.class); // specify the output class (what reduce() emits) for key
     job.setOutputValueClass(Text.class); // specify the output class (what reduce() emits) for value
-    job.setJobName("Second PowerComp");
+    job.setJobName("Third PowerComp");
     System.exit(job.waitForCompletion(true) ? 0 : 1);
   }
 }
